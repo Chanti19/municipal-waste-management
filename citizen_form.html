@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Report Bin Status</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="index.html" class="back-link" style="margin-bottom:18px; display:inline-block;">← Back to Home</a>
+  <h2 class="form-title" style="margin-top:16px; font-size:2.7rem; font-weight:800;">Report Bin Status</h2>
+  <p class="form-desc" style="margin-bottom:32px; font-size:1.25rem; color:#444;">Help us optimize waste collection by reporting bin fill levels</p>
+  <div class="form-card enhanced-card">
+    <form id="binForm">
+      <div class="input-group" style="flex-direction:column; align-items:flex-start; margin-bottom:22px;">
+        <label for="street" style="font-weight:600; color:#222; margin-bottom:8px; display:flex; align-items:center; font-size:1.08rem;">
+          <svg width="22" height="22" fill="#2563eb" style="margin-right:8px;" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          Street Name
+        </label>
+        <input type="text" id="street" placeholder="e.g., MG Road, Nehru Street" required />
+      </div>
+      <div class="input-group" style="flex-direction:column; align-items:flex-start; margin-bottom:22px;">
+        <label for="bin" style="font-weight:600; color:#222; margin-bottom:8px; display:flex; align-items:center; font-size:1.08rem;">
+          <svg width="22" height="22" fill="#2563eb" style="margin-right:8px;" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm2 3h14v13H5V9zm3 2v9h2v-9H8zm4 0v9h2v-9h-2z"/></svg>
+          Bin ID / Bin Name
+        </label>
+        <input type="text" id="bin" placeholder="e.g., Bin-23, Central Market Bin" required />
+      </div>
+      <div class="input-group" style="flex-direction:column; align-items:flex-start; margin-bottom:28px;">
+        <label for="fill" style="font-weight:600; color:#222; margin-bottom:8px; display:flex; align-items:center; font-size:1.08rem;">
+          <svg width="22" height="22" fill="#2563eb" style="margin-right:8px;" viewBox="0 0 24 24"><path d="M17.5 6.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM6.5 17.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM19.07 4.93l-14.14 14.14 1.41 1.41 14.14-14.14-1.41-1.41z"/></svg>
+          Fill Percentage (0-100%)
+        </label>
+        <input type="number" id="fill" placeholder="Enter percentage (0-100)" min="0" max="100" required />
+      </div>
+      <button type="submit" class="submit-btn enhanced-btn">
+        <svg width="24" height="24" fill="#fff" style="margin-right:10px;" viewBox="0 0 24 24"><path d="M2 21l21-9-21-9v7l15 2-15 2z"/></svg>
+        Submit Report
+      </button>
+    </form>
+    <p id="msg"></p>
+  </div>
+  <script>
+    document.getElementById('binForm').onsubmit = function (e) {
+      e.preventDefault();
+      const street = document.getElementById('street').value;
+      const bin = document.getElementById('bin').value;
+      const fill = parseInt(document.getElementById('fill').value);
+
+      
+      let data = JSON.parse(localStorage.getItem('binReports') || "[]");
+      data.push({ street, bin, fill });
+      localStorage.setItem('binReports', JSON.stringify(data));
+
+      document.getElementById('msg').innerText = "✅ Thank you! Report submitted.";
+      document.getElementById('binForm').reset();
+    };
+  </script>
+</body>
+</html>

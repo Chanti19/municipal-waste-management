@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Waste Collection</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1 class="title">
+    <svg width="40" height="40" fill="#22c55e" viewBox="0 0 24 24" style="vertical-align:middle;"><path d="M3 6h18v2H3V6zm2 3h14v13H5V9zm3 2v9h2v-9H8zm4 0v9h2v-9h-2z"/></svg>
+    <span>Smart Waste Collection</span>
+  </h1>
+  <p class="sub">Efficient waste management through citizen participation<br>and municipal oversight</p>
+  <div class="container">
+    <div class="card">
+      <div class="icon-box citizen-icon">
+        <svg width="48" height="48" fill="#2563eb" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20v-2c0-2.21 3.58-4 8-4s8 1.79 8 4v2"/></svg>
+      </div>
+      <h2 class="card-title">General Citizen</h2>
+      <p class="card-desc">Report bin fill status in your area to help optimize waste collection schedules</p>
+      <ul class="feature-list citizen-features">
+        <li><span class="dot blue"></span>Report bin fill percentage</li>
+        <li><span class="dot blue"></span>Specify location details</li>
+        <li><span class="dot blue"></span>Quick and easy submission</li>
+      </ul>
+      <button class="submit-btn" onclick="location.href='citizen_form.html'">Report Bin Status</button>
+    </div>
+    <div class="card">
+      <div class="icon-box staff-icon">
+        <svg width="48" height="48" fill="#22c55e" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <h2 class="card-title">Municipal Staff</h2>
+      <p class="card-desc">Access the dashboard to view and manage waste collection data from citizens</p>
+      <ul class="feature-list staff-features">
+        <li><span class="dot green"></span>View all bin reports</li>
+        <li><span class="dot green"></span>Sorted by fill percentage</li>
+        <li><span class="dot green"></span>Real-time data updates</li>
+      </ul>
+      <button class="submit-btn green-btn" onclick="location.href='municipal_login.html'">Access Dashboard</button>
+    </div>
+  </div>
+  <footer class="footer">
+    <svg width="20" height="20" fill="#2563eb" style="vertical-align:middle;"><path d="M4 17h16v2H4zm0-5h16v2H4zm0-5h16v2H4z"/></svg>
+    Efficient • Sustainable • Community-Driven
+  </footer>
+</body>
+</html>
