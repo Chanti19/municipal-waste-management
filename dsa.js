@@ -1,12 +1,29 @@
-function insertionSortDescending(data) {
-  for (let i = 1; i < data.length; i++) {
-    let key = data[i];
-    let j = i - 1;
-    while (j >= 0 && data[j].fill < key.fill) {
-      data[j + 1] = data[j];
-      j--;
+function mergeSortDescending(data) {
+  if (data.length <= 1) return data;
+
+  const mid = Math.floor(data.length / 2);
+  const left = mergeSortDescending(data.slice(0, mid));
+  const right = mergeSortDescending(data.slice(mid));
+
+  return mergeDescending(left, right);
+}
+
+function mergeDescending(left, right) {
+  const result = [];
+  let i = 0, j = 0;
+
+  while (i < left.length && j < right.length) {
+    if (left[i].fill >= right[j].fill) { // descending by .fill
+      result.push(left[i]);
+      i++;
+    } else {
+      result.push(right[j]);
+      j++;
     }
-    data[j + 1] = key;
   }
-  return data;
+
+  // Append remaining items
+  return result
+    .concat(left.slice(i))
+    .concat(right.slice(j));
 }
